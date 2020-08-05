@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+`1`1<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Anin Arafath</title>
     <meta content="" name="descriptison" />
     <meta content="" name="keywords" />
@@ -437,10 +437,11 @@
                       </div>
                       <div>
                         <form
-                          action="forms/contact.php"
-                          method="post"
-                          role="form"
+                          action=""
+                          
+                          
                           class="php-email-form"
+                          id="submit-form"
                         >
                           <div class="row">
                             <div class="col-md-12 mb-3">
@@ -500,18 +501,18 @@
                             </div>
                             <div class="col-md-12 text-center mb-3">
                               <div class="loading">Loading</div>
-                              <div class="error-message"></div>
-                              <div class="sent-message">
-                                Your message has been sent. Thank you!
-                              </div>
+                              
+                             
                             </div>
                             <div class="col-md-12 text-center">
-                              <button
+                              <input
                                 type="submit"
                                 class="button button-a button-big button-rouded"
+                                value="Send Message"
+                                style="border-radius: 25px;padding: 15px;"
                               >
-                                Send Message
-                              </button>
+                                
+                              
                             </div>
                           </div>
                         </form>
@@ -595,5 +596,27 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script>
+      $("#submit-form").submit((e)=>{
+  
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbzH84YV0ZkNU6hrs84kzCqcTBRi7IgClOiNdtfnmQ/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Your message submitted successfully")
+                  window.location.reload()
+              //     window.location.href="https://aninarafath6.github.io/annin-arafath-static-website/"
+              // //
+               },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      });
+
+  </script>
   </body>
 </html>
